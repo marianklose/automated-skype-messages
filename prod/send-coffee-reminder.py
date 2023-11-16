@@ -1,5 +1,3 @@
-
-```{python}
 import random
 import requests
 from openai import OpenAI
@@ -14,9 +12,7 @@ client = OpenAI(
 
 # connect to skype
 sk = Skype(sk_username, sk_password)
-```
 
-```{python}
 # functions
 def download_image(url, filename):
     # Send an HTTP GET request to the URL
@@ -32,9 +28,7 @@ def download_image(url, filename):
     else:
         print("Failed to download the image")
 
-```
 
-```{python}
 # define some coffee words
 coffee_words = [
     "espresso", "latte", "cappuccino", "arabica", "robusta", 
@@ -81,7 +75,7 @@ artistic_styles = [
     "Photorealistic", "Cartoon", "Futuristic",  "Surrealistic",    "Impressionistic",
     "Abstract",  "Pixel Art",  "Watercolor",
     "Oil Painting",  "Charcoal Sketch",  "Minimalist",   "Gothic",
-    "Art Deco",  "Cubism",  "Steampunk",  "Retro 80s",   "Anime",
+    "Art Deco",  "Cubism",  "Steampunk",  "Anime",
     "Graffiti",   "Pop Art",   "Art Nouveau"
 ]
 
@@ -114,38 +108,36 @@ message_response = client.chat.completions.create(
 # Extract the actual response text
 message_response_text = message_response.choices[0].message.content
 
-# generate image
-img_response = client.images.generate(
-  model="dall-e-3",
-  prompt=f'A very {coffee_word_sample} and {random.sample(dirty_words, 1)} looking coffee machine used to make {coffee_word_sample} coffee in a {artistic_styles_sample} style hightlighting how {random.sample(dirty_words, 1)} it is.',
-  size="1024x1024",
-  quality="standard",
-  n=1,
-)
+# # generate image
+# img_response = client.images.generate(
+#   model="dall-e-3",
+#   prompt=f'A very {coffee_word_sample} and {random.sample(dirty_words, 1)} looking coffee machine used to make {coffee_word_sample} coffee in a {artistic_styles_sample} style hightlighting how {random.sample(dirty_words, 1)} and dirty looking it is.',
+#   size="1024x1024",
+#   quality="standard",
+#   n=1,
+# )
 
-# define url
-image_url = img_response.data[0].url
+# # define url
+# image_url = img_response.data[0].url
 
-# Path where the image will be saved
-file_path = "img.png"
+# # Path where the image will be saved
+# file_path = "img.png"
 
-# download image
-download_image(image_url, file_path)
+# # download image
+# download_image(image_url, file_path)
 
 # Print response
 print(message_response_text)
-```
 
-```{python}
 # store chats 
 ch = sk.contacts["live:.cid.6cace4c66e5c4e19"].chat
 
-# send image
-with open("img.png", "rb") as f:
-    ch.sendFile(f, "img.png", image=True)
+# # send image
+# with open("img.png", "rb") as f:
+#     ch.sendFile(f, "img.png", image=True)
 
 # send message
 ch.sendMsg(message_response_text)
-```
+
 
 
