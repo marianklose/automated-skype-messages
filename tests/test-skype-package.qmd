@@ -149,3 +149,15 @@ ch.sendMsg(message_response_text)
 ```
 
 
+
+```{python}
+# while sk.chats.recent():
+#     pass  # Just populate the cache.
+
+# for chat in sk.chats:
+#     print(chat.id)
+
+ch = sk.chats["19:f001a4cf98cd4e0d877fc54006586918@thread.skype"]
+ch.topic
+ch.getMsgs()
+```
