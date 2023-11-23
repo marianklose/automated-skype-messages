@@ -116,7 +116,7 @@ def send_reminder(event, context):
      # generate image
      img_response = client.images.generate(
           model="dall-e-3",
-          prompt=f'A very {coffee_word_sample} and {random.sample(dirty_words, 1)} looking coffee machine used to make {coffee_word_sample} coffee in a {artistic_styles_sample} style hightlighting how {random.sample(dirty_words, 1)} and dirty looking it is and a happy chicken cleaning it.',
+          prompt=f'A very {dirty_word_sample} and {random.sample(dirty_words, 1)} looking coffee machine used to make {coffee_word_sample} coffee in a {artistic_styles_sample} style hightlighting how {random.sample(dirty_words, 1)} and dirty looking it is and a happy chicken cleaning it.',
           size="1024x1024",
           quality="standard",
           n=1
